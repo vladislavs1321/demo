@@ -1,0 +1,11 @@
+services:
+
+    searcher_registry:
+        class: AppBundle\Service\SearchService
+
+    elastic_searcher:
+        class: AppBundle\Service\ElasticSearcher
+        tags:
+            -  { name: searcher_item }
+        calls:
+              - [setTextFinder, ['@fos_elastica.finder.app.text']]
